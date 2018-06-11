@@ -2,6 +2,7 @@ package com.test.demo.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * @author JiangYx
@@ -12,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Update -
  * @Description
  */
+@EnableDiscoveryClient
 @SpringBootApplication
 public class Application {
     public static void main(String[] args) {

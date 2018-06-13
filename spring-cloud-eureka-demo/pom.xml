@@ -11,13 +11,18 @@
 
     <artifactId>spring-cloud-eureka-demo</artifactId>
 
+    <properties>
+        <spring.cloud.version>Finchley.RC2</spring.cloud.version>
+    </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Brixton.SR7</version>
+                <version>${spring.cloud.version}</version>
                 <type>pom</type>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -4,8 +4,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
-import java.lang.instrument.Instrumentation;
-
 /**
  * @author JiangYx
  * @Project
@@ -17,8 +15,8 @@ import java.lang.instrument.Instrumentation;
  */
 @EnableEurekaServer
 @SpringBootApplication
-public class Application {
+public class EurekaApplication {
     public static void main(String[] args) {
-        new SpringApplicationBuilder(Application.class).web(true).run(args);
+        new SpringApplicationBuilder(EurekaApplication.class).web(true).run(args);
     }
 }

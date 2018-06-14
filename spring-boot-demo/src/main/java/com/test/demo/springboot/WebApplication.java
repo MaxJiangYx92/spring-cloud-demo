@@ -2,7 +2,7 @@ package com.test.demo.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-//import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * @author JiangYx
@@ -13,10 +13,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Update -
  * @Description
  */
-//@EnableDiscoveryClient
+@EnableDiscoveryClient
 @SpringBootApplication
-public class Application {
+public class WebApplication {
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(WebApplication.class, args);
     }
 }

@@ -8,6 +8,8 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @author JiangYx
  * @Project
@@ -26,8 +28,14 @@ public class HelloController {
 
     @RequestMapping("/hello")
     public String index() {
-        ServiceInstance instance = client.getLocalServiceInstance();
-        logger.info("/hello,host:" + instance.getHost() + ", service_id:" + instance.getServiceId());
+        List<ServiceInstance> instance = client.getInstances("");
+//        logger.info("/hello,host:" + instance.getHost() + ", service_id:" + instance.getServiceId());
+
+//        List<String> services=client.getServices();
+        for (ServiceInstance item : instance) {
+            System.out.println("/hello,host:" + item.getHost() + ", service_id:" + item.getServiceId());
+        }
+//        System.out.println(client.getServices());
         return "hello spring boot";
     }
 }

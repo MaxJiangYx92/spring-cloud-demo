@@ -1,5 +1,6 @@
 package com.test.demo.springboot.controller;
 
+import com.test.demo.common.pojo.UserDO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.data.redis.core.ReactiveRedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
@@ -46,5 +48,19 @@ public class HelloController {
         reactiveRedisTemplate.opsForValue().set(key, value);
 //        reactiveRedisTemplate.opsForSet().
         return Mono.just("hello reactive redis");
+    }
+
+    @RequestMapping("/nihao")
+    public Mono<UserDO> nihao(@RequestParam("name") String name) {
+        UserDO user = new UserDO();
+        user.setAge(18);
+        if (name != null) {
+            user.setName(name);
+        } else {
+            user.setName("little god");
+        }
+
+        user.setSex("boy");
+        return Mono.just(user);
     }
 }

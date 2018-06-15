@@ -12,6 +12,7 @@
         <module>spring-boot-demo</module>
         <module>spring-cloud-eureka-demo</module>
         <module>spring-cloud-ribbon-demo</module>
+        <module>spring-demo-common</module>
     </modules>
 
     <properties>
@@ -26,6 +27,15 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.0.2.RELEASE</version>
     </parent>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+    </dependencies>
 
     <build>
         <plugins>

@@ -35,17 +35,17 @@ public class HelloControllerTest {
         mvc = MockMvcBuilders.standaloneSetup(new HelloController()).build();
     }
 
-    @Test
-    public void hello() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/hello")
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string(Matchers.equalTo("hello spring boot")));
-    }
-
-    @Test
-    public void health() throws Exception {
-        System.out.println(mvc.perform(MockMvcRequestBuilders.get("/hello")).toString());
-
-    }
+//    @Test
+//    public void hello() throws Exception {
+//        mvc.perform(MockMvcRequestBuilders.get("/hello")
+//                .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(MockMvcResultMatchers.status().isOk())
+//                .andExpect(MockMvcResultMatchers.content().string(Matchers.equalTo("hello spring boot")));
+//    }
+//
+//    @Test
+//    public void health() throws Exception {
+//        System.out.println(mvc.perform(MockMvcRequestBuilders.get("/hello")).toString());
+//
+//    }
 }

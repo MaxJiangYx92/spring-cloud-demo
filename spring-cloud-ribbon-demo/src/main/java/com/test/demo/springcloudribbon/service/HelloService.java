@@ -24,6 +24,19 @@ public class HelloService {
     @Autowired
     RestTemplate restTemplate;
 
+    /**
+     * Question1:hystrix方法一，非注解版
+     * @return
+     */
+//    public String helloService(){
+//        String hello=new HelloCommand(restTemplate,1L).execute();
+//    }
+
+    /**
+     * hystrix方法二，注解版
+     *
+     * @return
+     */
     @HystrixCommand(fallbackMethod = "helloFallback")
     public String helloService() {
         //Hystrix默认服务提供者超时为2秒，触发回调
@@ -33,10 +46,13 @@ public class HelloService {
         return result;
     }
 
+    /**
+     * Question2:
+     * @return
+     */
 //    @HystrixCommand
 //    public Future<UserDO> helloServiceAsync() {
 //        return new AsyncResult<UserDO>() {
-//            @Override
 //            public UserDO invoke() {
 //                return null;
 //                //restTemplate.getForEntity("http://HELLO-SERVICE/hello", String.class).getBody();

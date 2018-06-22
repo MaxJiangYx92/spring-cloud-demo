@@ -5,6 +5,7 @@ import com.netflix.hystrix.HystrixCommandGroupKey;
 import com.test.demo.common.pojo.UserDO;
 import com.test.demo.springcloudribbon.service.UserService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.netflix.hystrix.HystrixCommandGroupKey.Factory.asKey;
@@ -32,5 +33,10 @@ public class UserBatchCommand extends HystrixCommand<List<UserDO>> {
     @Override
     protected List<UserDO> run() throws Exception {
         return userService.findAll(names);
+    }
+
+    @Override
+    public List<UserDO> getFallback() {
+        return new ArrayList<>();
     }
 }

@@ -13,6 +13,7 @@
         <module>spring-cloud-eureka-demo</module>
         <module>spring-cloud-ribbon-demo</module>
         <module>spring-demo-common</module>
+        <module>spring-cloud-feign-demo</module>
     </modules>
 
     <properties>

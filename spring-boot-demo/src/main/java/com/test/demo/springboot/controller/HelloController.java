@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.data.redis.core.ReactiveRedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
@@ -30,7 +31,7 @@ public class HelloController {
     @Autowired
     private ReactiveRedisTemplate<String, String> reactiveRedisTemplate;
 
-    @RequestMapping("/hello")
+    @RequestMapping(name = "/hello")
     public Mono<String> index() {
 //        List<ServiceInstance> instance = client.getInstances("");
 //        logger.info("/hello,host:" + instance.getHost() + ", service_id:" + instance.getServiceId());
@@ -43,7 +44,7 @@ public class HelloController {
         String key = "hello_reactive_set";
         String value = "hello_reactive_value";
         reactiveRedisTemplate.opsForValue().set(key, value);
-//        reactiveRedisTemplate.opsForSet().
+
         return Mono.just("hello reactive redis");
     }
 

@@ -50,4 +50,29 @@ public class HystrixTest {
 
         context.close();
     }
+
+    @Test
+    public void test2() throws Exception {
+        HystrixRequestContext context = HystrixRequestContext.initializeContext();
+        System.out.println("hello test2");
+
+//        Future<UserDO> f1 = userService.find2("123");
+//        Future<UserDO> f2 = userService.find2("456");
+//        Future<UserDO> f3 = userService.find2("789");
+//        Thread.sleep(3000);
+//        System.out.println("f1>>>" + f1.get());
+//        System.out.println("f2>>>" + f2.get());
+//        System.out.println("f3>>>" + f3.get());
+
+        for (int i = 0; i < 10; i++) {
+            userService.find2("123" + i);
+        }
+        Thread.sleep(3000);
+
+//        System.out.println(userService.find("test1").get().toString());
+//        System.out.println(userService.find("test2").get().toString());
+//        System.out.println(userService.find("test3").get().toString());
+
+        context.close();
+    }
 }

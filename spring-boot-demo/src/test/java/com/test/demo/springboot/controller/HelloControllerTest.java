@@ -1,10 +1,15 @@
 package com.test.demo.springboot.controller;
 
+import com.test.demo.common.pojo.TestDO;
+import com.test.demo.springboot.service.SpringContextUtil;
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -30,9 +35,25 @@ public class HelloControllerTest {
     //用于调用controller的接口发起请求，perform执行一次请求，accept请求类型，andExpect用于判断接口的返回期望值
     private MockMvc mvc;
 
+    @Autowired
+    TestDO testDO;
+//    @Bean
+//    @ConfigurationProperties
+//    public TestDO testDO() {
+//        return new TestDO();
+//    }//TODO: @ConfigurationProperties(prefix = "xxx")
+
     @Before
     public void setUp() throws Exception {
         mvc = MockMvcBuilders.standaloneSetup(new HelloController()).build();
+    }
+
+    @Test
+    public void test() {
+//        System.out.println(testDO.getName());
+//        TestDO testDO = (TestDO) SpringContextUtil.getBean("testDO");
+//        TestDO testDO = testDO();
+        System.out.println(testDO.getName());
     }
 
 //    @Test

@@ -17,5 +17,9 @@ import java.util.concurrent.Future;
 public interface UserService {
     UserDO find(String name);
 
+    Future<UserDO> find2(String name);
+
     List<UserDO> findAll(String names);
+
+    List<UserDO> findAll(List<String> names);
 }

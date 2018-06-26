@@ -1,5 +1,6 @@
 package com.test.demo.springcloudribbon;
 
+import com.netflix.hystrix.strategy.concurrency.HystrixRequestContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
@@ -30,5 +31,6 @@ public class ConsumerApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ConsumerApplication.class,args);
+//        HystrixRequestContext context = HystrixRequestContext.initializeContext();
     }
 }

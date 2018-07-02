@@ -40,7 +40,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDO find(String name) {
-        return null;
+        System.out.println("find one " + name);
+        UserDO user=new UserDO();
+        user.setName("hello one");
+        user.setSex("boy");
+        user.setAge(18);
+        return user;
     }
 
     @CacheResult

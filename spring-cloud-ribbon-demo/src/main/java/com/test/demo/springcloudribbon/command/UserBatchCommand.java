@@ -32,6 +32,7 @@ public class UserBatchCommand extends HystrixCommand<List<UserDO>> {
 
     @Override
     protected List<UserDO> run() throws Exception {
+        System.out.println("batch command names:" + names);
         return userService.findAll(names);
     }
 

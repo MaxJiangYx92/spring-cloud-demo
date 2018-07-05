@@ -4,6 +4,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCollapser;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.netflix.hystrix.contrib.javanica.cache.annotation.CacheResult;
+import com.netflix.hystrix.strategy.concurrency.HystrixRequestContext;
 import com.test.demo.common.pojo.UserDO;
 import com.test.demo.springcloudribbon.service.UserService;
 import org.apache.commons.lang.StringUtils;
@@ -30,9 +31,12 @@ public class UserServiceImpl implements UserService {
     @Autowired
     RestTemplate restTemplate;
 
-    @HystrixCollapser(batchMethod = "findAll", scope = com.netflix.hystrix.HystrixCollapser.Scope.GLOBAL, collapserProperties = {@HystrixProperty(name = "timerDelayInMilliseconds", value = "100")})
+    static HystrixRequestContext context;
+
+    @HystrixCollapser(batchMethod = "findAll", scope = com.netflix.hystrix.HystrixCollapser.Scope.GLOBAL, collapserProperties = {@HystrixProperty(name = "timerDelayInMilliseconds", value = "2000")})
     @Override
     public Future<UserDO> find2(String name) {
+        context = HystrixRequestContext.initializeContext();
 //        UserDO userDO = restTemplate.getForObject("http://HELLO-SERVICE/users/{1}", UserDO.class, name);
 //        return userDO;
         return null;
@@ -41,7 +45,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDO find(String name) {
         System.out.println("find one " + name);
-        UserDO user=new UserDO();
+        UserDO user = new UserDO();
         user.setName("hello one");
         user.setSex("boy");
         user.setAge(18);
@@ -56,10 +60,14 @@ public class UserServiceImpl implements UserService {
         System.out.println(names);
         List<UserDO> list = new ArrayList<>();
         for (String item : names) {
+            System.out.println(item);
             UserDO userDO = new UserDO();
             userDO.setName(item);
+//            System.out.println(item);
             list.add(userDO);
         }
+
+        context.shutdown();
         return list;
         //restTemplate.getForObject("http://HELLO-SERVICE/users?names={1}", List.class, StringUtils.join(names, ","));
     }

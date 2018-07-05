@@ -29,7 +29,9 @@ public class UserCollapseCommand extends HystrixCollapser<List<UserDO>, UserDO, 
 
     public UserCollapseCommand(UserService userService, String name) {
         super(Setter.withCollapserKey(asKey("userCollapseCommand"))
-                .andCollapserPropertiesDefaults(HystrixCollapserProperties.Setter().withTimerDelayInMilliseconds(5000)));
+                .andCollapserPropertiesDefaults(HystrixCollapserProperties.Setter().withTimerDelayInMilliseconds(2000))
+                .andScope(Scope.GLOBAL));
+        System.out.println("construct command");
         this.userService = userService;
         this.name = name;
     }
@@ -41,6 +43,7 @@ public class UserCollapseCommand extends HystrixCollapser<List<UserDO>, UserDO, 
 
     @Override
     protected HystrixCommand<List<UserDO>> createCommand(Collection<CollapsedRequest<UserDO, String>> collapsedRequests) {
+        System.out.println("create command");
         List<String> names = new ArrayList<>(collapsedRequests.size());
         names.addAll(collapsedRequests.stream().map(CollapsedRequest::getArgument).collect(Collectors.toList()));
         return new UserBatchCommand(userService, StringUtils.join(names, ","));
@@ -48,6 +51,7 @@ public class UserCollapseCommand extends HystrixCollapser<List<UserDO>, UserDO, 
 
     @Override
     protected void mapResponseToRequests(List<UserDO> batchResponse, Collection<CollapsedRequest<UserDO, String>> collapsedRequests) {
+        System.out.println("map response to requests");
         int count = 0;
         for (CollapsedRequest<UserDO, String> collapsedRequest : collapsedRequests) {
             UserDO userDO = batchResponse.get(count++);

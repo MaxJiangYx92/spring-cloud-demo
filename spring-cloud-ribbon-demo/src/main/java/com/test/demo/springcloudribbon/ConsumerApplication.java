@@ -22,7 +22,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableCircuitBreaker
 @EnableDiscoveryClient
 @SpringBootApplication
-@ServletComponentScan
+//@ServletComponentScan
 public class ConsumerApplication {
 
     @Bean

@@ -9,6 +9,7 @@ import com.test.demo.common.pojo.UserDO;
 import com.test.demo.springcloudribbon.command.UserCollapseCommand;
 import com.test.demo.springcloudribbon.command.UserCommand;
 import com.test.demo.springcloudribbon.service.impl.UserServiceImpl;
+import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,10 +21,7 @@ import reactor.core.publisher.Mono;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
+import java.util.concurrent.*;
 
 /**
  * @author JiangYx
@@ -49,16 +47,43 @@ public class UserController {
 
 //    HystrixRequestContext context = HystrixRequestContext.initializeContext();
 
+//    @Before(value = "user1Consumer")
+//    public void initRequestContext(){
+//        HystrixRequestContext context = HystrixRequestContext.initializeContext();
+//    }
+
     @RequestMapping(value = "ribbon-users", method = RequestMethod.GET)
     public UserDO user1Consumer() throws Exception {
 //        HystrixRequestContext context = HystrixRequestContext.initializeContext();
         String name = "hello_hystrix";
 //        return restTemplate.getForEntity("http://HELLO-SERVICE/users/{1}", UserDO.class, name).getBody();
-//        UserDO userDO = userService.find(name);
-        UserCollapseCommand u1 = new UserCollapseCommand(userService, name);
-        u1.queue();
+//        ExecutorService executorService = Executors.newFixedThreadPool(1);
+//        executorService.submit(new Runnable() {
+//            @Override
+//            public void run() {
+//                userService.find2(name);
+//            }
+//        });
+//        executorService.shutdown();
+//        while (true) {
+//            if (executorService.isTerminated()) {
+//                System.out.println("all thread is terminated");
+//                context.close();
+//                break;
+//            }
+//            Thread.sleep(500);
+//        }
+
+        userService.find2(name);
+
+//        Thread.sleep(2000);
+//        context.close();
+
+//        UserCollapseCommand u1 = new UserCollapseCommand(userService, name);
+//        u1.queue();
 
 //        return userDO;
+
         return new UserDO();
     }
 

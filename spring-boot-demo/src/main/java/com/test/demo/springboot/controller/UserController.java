@@ -1,7 +1,7 @@
 package com.test.demo.springboot.controller;
 
 import com.test.demo.common.pojo.UserDO;
-import com.test.demo.springboot.service.TestAnnotation;
+import com.test.demo.springboot.core.annotion.MyComponent;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +12,6 @@ import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * @author JiangYx
@@ -25,12 +24,10 @@ import java.util.Random;
  */
 @RestController
 public class UserController {
-    @Autowired
-    TestAnnotation testAnnotation;
 
+    @MyComponent("hello_aop_controller")
     @RequestMapping("/users/{name}")
     public Mono<UserDO> find(@PathVariable("name") String name) {
-        testAnnotation.print();
         System.out.println("this is single request");
         UserDO userDO = new UserDO();
         userDO.setSex("boy");

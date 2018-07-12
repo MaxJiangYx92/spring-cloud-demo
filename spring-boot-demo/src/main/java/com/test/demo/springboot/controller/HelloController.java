@@ -45,6 +45,8 @@ public class HelloController {
         String value = "hello_reactive_value";
         reactiveRedisTemplate.opsForValue().set(key, value);
 
+        logger.info("hello boot request");
+
         return Mono.just("hello reactive redis");
     }
 

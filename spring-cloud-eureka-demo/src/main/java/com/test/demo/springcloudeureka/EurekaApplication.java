@@ -1,5 +1,7 @@
 package com.test.demo.springcloudeureka;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
@@ -16,6 +18,9 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 @EnableEurekaServer
 @SpringBootApplication
 public class EurekaApplication {
+
+    final Logger logger = LoggerFactory.getLogger(EurekaApplication.class);
+
     public static void main(String[] args) {
         new SpringApplicationBuilder(EurekaApplication.class).web(true).run(args);
     }

@@ -1,4 +1,4 @@
-package com.test.demo.springcloudribbon.service.impl;
+package com.test.demo.ribbon.service.impl;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCollapser;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
@@ -6,8 +6,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.netflix.hystrix.contrib.javanica.cache.annotation.CacheResult;
 import com.netflix.hystrix.strategy.concurrency.HystrixRequestContext;
 import com.test.demo.common.pojo.UserDO;
-import com.test.demo.springcloudribbon.service.UserService;
-import org.apache.commons.lang.StringUtils;
+import com.test.demo.ribbon.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;

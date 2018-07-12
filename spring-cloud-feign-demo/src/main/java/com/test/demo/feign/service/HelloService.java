@@ -1,4 +1,4 @@
-package com.test.demo.springcloudfeign.service;
+package com.test.demo.feign.service;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,4 +1,4 @@
-package com.test.demo.springcloudribbon.command;
+package com.test.demo.ribbon.command;
 
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;

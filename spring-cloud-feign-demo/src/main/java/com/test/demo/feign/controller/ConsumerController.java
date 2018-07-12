@@ -1,6 +1,6 @@
-package com.test.demo.springcloudfeign.controller;
+package com.test.demo.feign.controller;
 
-import com.test.demo.springcloudfeign.service.HelloService;
+import com.test.demo.feign.service.HelloService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.test.demo.springcloudfeign;
+package com.test.demo.feign;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

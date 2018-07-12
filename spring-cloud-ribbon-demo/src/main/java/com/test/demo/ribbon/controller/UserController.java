@@ -1,26 +1,15 @@
-package com.test.demo.springcloudribbon.controller;
+package com.test.demo.ribbon.controller;
 
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCollapser;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
-import com.netflix.hystrix.contrib.javanica.cache.annotation.CacheResult;
 import com.netflix.hystrix.strategy.concurrency.HystrixRequestContext;
 import com.test.demo.common.pojo.UserDO;
-import com.test.demo.springcloudribbon.command.UserCollapseCommand;
-import com.test.demo.springcloudribbon.command.UserCommand;
-import com.test.demo.springcloudribbon.service.impl.UserServiceImpl;
-import org.aspectj.lang.annotation.Before;
+import com.test.demo.ribbon.command.UserCollapseCommand;
+import com.test.demo.ribbon.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import reactor.core.publisher.Mono;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.concurrent.*;
 
 /**

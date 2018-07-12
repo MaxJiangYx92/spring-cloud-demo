@@ -1,8 +1,7 @@
-package com.test.demo.springcloudribbon.controller;
+package com.test.demo.ribbon.controller;
 
 import com.test.demo.common.pojo.UserDO;
-import com.test.demo.springcloudribbon.service.HelloService;
-import org.aspectj.lang.annotation.Before;
+import com.test.demo.ribbon.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

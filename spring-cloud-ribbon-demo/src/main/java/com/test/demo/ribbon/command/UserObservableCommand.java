@@ -1,4 +1,4 @@
-package com.test.demo.springcloudribbon.command;
+package com.test.demo.ribbon.command;
 
 import com.netflix.hystrix.HystrixObservableCommand;
 import com.test.demo.common.pojo.UserDO;

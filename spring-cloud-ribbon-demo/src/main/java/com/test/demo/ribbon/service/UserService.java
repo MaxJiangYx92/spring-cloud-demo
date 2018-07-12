@@ -1,4 +1,4 @@
-package com.test.demo.springcloudribbon.service;
+package com.test.demo.ribbon.service;
 
 import com.test.demo.common.pojo.UserDO;
 

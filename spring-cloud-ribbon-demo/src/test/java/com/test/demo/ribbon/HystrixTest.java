@@ -1,9 +1,9 @@
-package com.test.demo.springcloudribbon;
+package com.test.demo.ribbon;
 
 import com.netflix.hystrix.strategy.concurrency.HystrixRequestContext;
 import com.test.demo.common.pojo.UserDO;
-import com.test.demo.springcloudribbon.command.UserCollapseCommand;
-import com.test.demo.springcloudribbon.service.impl.UserServiceImpl;
+import com.test.demo.ribbon.command.UserCollapseCommand;
+import com.test.demo.ribbon.service.impl.UserServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

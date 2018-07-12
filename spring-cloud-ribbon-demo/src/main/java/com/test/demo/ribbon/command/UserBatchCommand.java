@@ -1,9 +1,8 @@
-package com.test.demo.springcloudribbon.command;
+package com.test.demo.ribbon.command;
 
 import com.netflix.hystrix.HystrixCommand;
-import com.netflix.hystrix.HystrixCommandGroupKey;
 import com.test.demo.common.pojo.UserDO;
-import com.test.demo.springcloudribbon.service.UserService;
+import com.test.demo.ribbon.service.UserService;
 
 import java.util.ArrayList;
 import java.util.List;

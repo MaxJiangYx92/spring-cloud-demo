@@ -1,13 +1,9 @@
-package com.test.demo.springcloudribbon.service;
+package com.test.demo.ribbon.service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.test.demo.common.pojo.UserDO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.concurrent.Future;
 
 /**
  * @author JiangYx

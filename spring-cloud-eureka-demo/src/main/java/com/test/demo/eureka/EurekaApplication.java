@@ -1,4 +1,4 @@
-package com.test.demo.springcloudeureka;
+package com.test.demo.eureka;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

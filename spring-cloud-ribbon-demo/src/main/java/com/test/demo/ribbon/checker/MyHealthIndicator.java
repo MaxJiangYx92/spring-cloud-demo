@@ -1,4 +1,4 @@
-package com.test.demo.springcloudribbon.checker;
+package com.test.demo.ribbon.checker;
 
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;

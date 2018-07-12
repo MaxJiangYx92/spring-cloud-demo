@@ -1,10 +1,10 @@
-package com.test.demo.springcloudribbon.command;
+package com.test.demo.ribbon.command;
 
 import com.netflix.hystrix.HystrixCollapser;
 import com.netflix.hystrix.HystrixCollapserProperties;
 import com.netflix.hystrix.HystrixCommand;
 import com.test.demo.common.pojo.UserDO;
-import com.test.demo.springcloudribbon.service.UserService;
+import com.test.demo.ribbon.service.UserService;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.ArrayList;

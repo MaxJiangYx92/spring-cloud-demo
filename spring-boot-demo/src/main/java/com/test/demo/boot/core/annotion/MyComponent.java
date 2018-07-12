@@ -1,6 +1,4 @@
-package com.test.demo.springboot.core.annotion;
-
-import org.springframework.stereotype.Component;
+package com.test.demo.boot.core.annotion;
 
 import java.lang.annotation.*;
 

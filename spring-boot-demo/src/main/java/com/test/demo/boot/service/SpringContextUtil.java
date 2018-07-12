@@ -1,4 +1,4 @@
-package com.test.demo.springboot.service;
+package com.test.demo.boot.service;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

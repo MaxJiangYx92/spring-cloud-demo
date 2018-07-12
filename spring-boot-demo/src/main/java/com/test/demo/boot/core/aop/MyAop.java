@@ -1,11 +1,7 @@
-package com.test.demo.springboot.core.aop;
+package com.test.demo.boot.core.aop;
 
-import com.test.demo.springboot.core.annotion.MyComponent;
 import org.aspectj.lang.annotation.*;
-import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
-
-import java.lang.reflect.Method;
 
 /**
  * @author JiangYx
@@ -19,7 +15,7 @@ import java.lang.reflect.Method;
 @Aspect
 @Component
 public class MyAop {
-    @Pointcut(value = "@annotation(com.test.demo.springboot.core.annotion.MyComponent)")
+    @Pointcut(value = "@annotation(com.test.demo.boot.core.annotion.MyComponent)")
     public void myAop() {
         System.out.println("hello my aop");
     }

@@ -44,7 +44,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.test.demo.springboot" level="info" additivity="false">
+    <logger name="com.test.demo.boot" level="info" additivity="false">
         <appender-ref ref="FILE-Boot"/>
         <appender-ref ref="STDOUT"/>
     </logger>

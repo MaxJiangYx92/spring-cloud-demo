@@ -1,12 +1,10 @@
-package com.test.demo.springboot.controller;
+package com.test.demo.boot.controller;
 
-import com.test.demo.springboot.core.annotion.MyComponent;
+import com.test.demo.boot.core.annotion.MyComponent;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import java.lang.reflect.Field;
 
 /**
  * @author JiangYx

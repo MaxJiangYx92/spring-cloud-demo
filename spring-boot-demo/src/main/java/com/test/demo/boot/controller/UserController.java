@@ -1,9 +1,8 @@
-package com.test.demo.springboot.controller;
+package com.test.demo.boot.controller;
 
 import com.test.demo.common.pojo.UserDO;
-import com.test.demo.springboot.core.annotion.MyComponent;
+import com.test.demo.boot.core.annotion.MyComponent;
 import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

@@ -1,4 +1,4 @@
-package com.test.demo.springboot.temp;
+package com.test.demo.boot.temp;
 
 /**
  * @author JiangYx

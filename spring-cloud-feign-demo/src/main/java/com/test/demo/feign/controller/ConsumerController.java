@@ -1,5 +1,6 @@
 package com.test.demo.feign.controller;
 
+import com.test.demo.common.pojo.UserDO;
 import com.test.demo.feign.service.HelloService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,5 +30,16 @@ public class ConsumerController {
     public String helloConsumer() {
         logger.info("hello feign consumer");
         return helloService.hello();
+    }
+
+    @RequestMapping(value = "/feign-consumer2", method = RequestMethod.GET)
+    public String helloConsumer2() {
+        logger.info("hello feign consumer 2");
+        StringBuilder sb = new StringBuilder();
+        sb.append(helloService.hello()).append("\n");
+        sb.append(helloService.hello("漂亮")).append("\n");
+        sb.append(helloService.hello("帅气", 20)).append("\n");
+        sb.append(helloService.hello(new UserDO("完美", "男", 21))).append("\n");
+        return sb.toString();
     }
 }

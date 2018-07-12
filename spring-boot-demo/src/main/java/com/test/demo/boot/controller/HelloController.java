@@ -6,9 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.data.redis.core.ReactiveRedisTemplate;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 /**
@@ -31,7 +29,7 @@ public class HelloController {
     private ReactiveRedisTemplate<String, String> reactiveRedisTemplate;
 
     @RequestMapping(name = "/hello")
-    public Mono<String> index() {
+    public Mono<String> hello() {
 //        List<ServiceInstance> instance = client.getInstances("");
 //        logger.info("/hello,host:" + instance.getHost() + ", service_id:" + instance.getServiceId());
 
@@ -47,6 +45,37 @@ public class HelloController {
         logger.info("hello boot request");
 
         return Mono.just("hello reactive redis");
+    }
+
+    @RequestMapping(name = "/hello1")
+    public Mono<String> hello1(@RequestParam("name") String name) {
+
+        logger.info("hello1 boot request");
+
+        return Mono.just("hello reactive " + name);
+    }
+
+    /**
+     * //@RequestHeader,@RequestParam指定参数名称注解，value不能少，会抛IllegalStateException
+     *
+     * @param name
+     * @param age
+     * @return
+     */
+    @RequestMapping(name = "/hello2")
+    public Mono<UserDO> hello1(@RequestHeader("name") String name, @RequestHeader("age") Integer age) {
+
+        logger.info("hello1 boot request");
+
+        return Mono.just(new UserDO(name, "boy", age));
+    }
+
+    @RequestMapping(name = "/hello3")
+    public Mono<String> hello1(@RequestBody UserDO userDO) {
+
+        logger.info("hello1 boot request");
+
+        return Mono.just("hello reactive userDO:name:" + userDO.getName() + "age:" + userDO.getAge());
     }
 
     @RequestMapping("/nihao")

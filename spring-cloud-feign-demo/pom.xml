@@ -30,6 +30,11 @@
             <artifactId>spring-cloud-starter-feign</artifactId>
             <version>1.4.4.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>com.test.demo</groupId>
+            <artifactId>spring-demo-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <repositories>

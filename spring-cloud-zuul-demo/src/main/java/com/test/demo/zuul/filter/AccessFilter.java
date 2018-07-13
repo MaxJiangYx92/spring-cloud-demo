@@ -52,10 +52,6 @@ public class AccessFilter extends ZuulFilter {
      */
     @Override
     public boolean shouldFilter() {
-//        RequestContext requestContext = RequestContext.getCurrentContext();
-//
-//        return requestContext.containsKey("error.status_code") && !requestContext.getBoolean("", false);
-
         return true;
     }
 
@@ -66,27 +62,27 @@ public class AccessFilter extends ZuulFilter {
      * @throws ZuulException
      */
     @Override
-    public Object run() {
-        RequestContext requestContext = RequestContext.getCurrentContext();
+    public Object run() throws ZuulException {
+        RequestContext ctx = RequestContext.getCurrentContext();
 
-        HttpServletRequest request = requestContext.getRequest();
+        HttpServletRequest request = ctx.getRequest();
 
         logger.info("send {} request to {}", request.getMethod(), request.getRequestURL().toString());
 
         Object accessToken = request.getParameter("accessToken");
         if (accessToken == null) {
             logger.warn("access token is empty");
-            requestContext.setSendZuulResponse(false);
-            requestContext.setResponseStatusCode(401);
+            ctx.setSendZuulResponse(false);
+            ctx.setResponseStatusCode(401);
             return null;
         }
 
 //        try {
 //
 //        } catch (ZuulException ex) {
-//            requestContext.set("error.status_code", HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-//            requestContext.set("error.message", ex.errorCause);
-//            requestContext.set("error.exception", ex);
+//            ctx.set("error.status_code", HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+//            ctx.set("error.message", ex.errorCause);
+//            ctx.set("error.exception", ex);
 //        }
 
         logger.info("access token ok");

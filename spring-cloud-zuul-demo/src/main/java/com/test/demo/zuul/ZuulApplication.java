@@ -1,6 +1,8 @@
 package com.test.demo.zuul;
 
+import com.netflix.zuul.FilterProcessor;
 import com.test.demo.zuul.filter.AccessFilter;
+import com.test.demo.zuul.processor.ZuulFilterProcessor;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
@@ -42,5 +44,6 @@ public class ZuulApplication {
 
     public static void main(String[] args) {
         new SpringApplicationBuilder(ZuulApplication.class).web(true).run(args);
+        FilterProcessor.setProcessor(new ZuulFilterProcessor());
     }
 }

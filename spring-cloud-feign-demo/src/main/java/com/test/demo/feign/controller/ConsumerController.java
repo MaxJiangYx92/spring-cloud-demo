@@ -28,6 +28,7 @@ public class ConsumerController {
 
     @RequestMapping(value = "/feign-consumer", method = RequestMethod.GET)
     public String helloConsumer() {
+
         logger.info("hello feign consumer");
         return helloService.hello();
     }

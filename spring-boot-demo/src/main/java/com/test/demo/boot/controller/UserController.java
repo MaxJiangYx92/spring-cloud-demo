@@ -25,7 +25,7 @@ import java.util.List;
 public class UserController {
 
     @MyComponent("hello_aop_controller")
-    @RequestMapping("/users/{name}")
+    @RequestMapping(value = "/users/{name}")
     public Mono<UserDO> find(@PathVariable("name") String name) {
         System.out.println("this is single request");
         UserDO userDO = new UserDO();
@@ -35,7 +35,7 @@ public class UserController {
         return Mono.just(userDO);
     }
 
-    @RequestMapping("/users")
+    @RequestMapping(value = "/users")
     public Mono<List<UserDO>> findAll(@RequestParam("names") String names) {
         System.out.println("this is merge request");
         List<UserDO> listUser = null;

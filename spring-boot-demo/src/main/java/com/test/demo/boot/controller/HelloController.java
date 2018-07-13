@@ -28,7 +28,7 @@ public class HelloController {
     @Autowired
     private ReactiveRedisTemplate<String, String> reactiveRedisTemplate;
 
-    @RequestMapping(name = "/hello")
+    @RequestMapping(value = "/hello")
     public Mono<String> hello() {
 //        List<ServiceInstance> instance = client.getInstances("");
 //        logger.info("/hello,host:" + instance.getHost() + ", service_id:" + instance.getServiceId());
@@ -47,7 +47,7 @@ public class HelloController {
         return Mono.just("hello reactive redis");
     }
 
-    @RequestMapping(name = "/hello1")
+    @RequestMapping(value = "/hello1")
     public Mono<String> hello1(@RequestParam("name") String name) {
 
         logger.info("hello1 boot request");
@@ -62,16 +62,16 @@ public class HelloController {
      * @param age
      * @return
      */
-    @RequestMapping(name = "/hello2")
-    public Mono<UserDO> hello1(@RequestHeader("name") String name, @RequestHeader("age") Integer age) {
+    @RequestMapping(value = "/hello2")
+    public Mono<UserDO> hello1(@RequestHeader(value = "name") String name, @RequestHeader(value = "age") Integer age) {
 
         logger.info("hello1 boot request");
 
         return Mono.just(new UserDO(name, "boy", age));
     }
 
-    @RequestMapping(name = "/hello3")
-    public Mono<String> hello1(@RequestBody UserDO userDO) {
+    @RequestMapping(value = "/hello3")
+    public Mono<String> hello3(@RequestBody UserDO userDO) {
 
         logger.info("hello1 boot request");
 

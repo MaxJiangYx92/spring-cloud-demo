@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author JiangYx
@@ -65,7 +66,7 @@ public class AccessFilter extends ZuulFilter {
      * @throws ZuulException
      */
     @Override
-    public Object run() throws ZuulException {
+    public Object run() {
         RequestContext requestContext = RequestContext.getCurrentContext();
 
         HttpServletRequest request = requestContext.getRequest();
@@ -79,6 +80,14 @@ public class AccessFilter extends ZuulFilter {
             requestContext.setResponseStatusCode(401);
             return null;
         }
+
+//        try {
+//
+//        } catch (ZuulException ex) {
+//            requestContext.set("error.status_code", HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+//            requestContext.set("error.message", ex.errorCause);
+//            requestContext.set("error.exception", ex);
+//        }
 
         logger.info("access token ok");
         return null;

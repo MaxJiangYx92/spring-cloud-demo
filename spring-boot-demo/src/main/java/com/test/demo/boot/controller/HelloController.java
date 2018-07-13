@@ -32,7 +32,7 @@ public class HelloController {
     public Mono<String> hello() throws Exception {
 
         //测试ribbon重试机制
-        Thread.sleep(3000);
+//        Thread.sleep(3000);
 
         //发现调用的服务
         client.getServices().forEach(id -> {

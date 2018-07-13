@@ -37,10 +37,10 @@ public class ConsumerController {
     public String helloConsumer2() {
         logger.info("hello feign consumer 2");
         StringBuilder sb = new StringBuilder();
-        sb.append(helloService.hello()).append("\n");
-        sb.append(helloService.hello("漂亮")).append("\n");
-        sb.append(helloService.hello("帅气", 20)).append("\n");
-        sb.append(helloService.hello(new UserDO("完美", "男", 21))).append("\n");
+        sb.append(helloService.hello()).append(System.lineSeparator());
+        sb.append(helloService.hello("漂亮")).append(System.lineSeparator());
+        sb.append(helloService.hello("帅气", 20)).append(System.lineSeparator());
+        sb.append(helloService.hello(new UserDO("完美", "男", 21))).append(System.lineSeparator());
         return sb.toString();
     }
 }

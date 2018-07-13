@@ -29,14 +29,17 @@ public class HelloController {
     private ReactiveRedisTemplate<String, String> reactiveRedisTemplate;
 
     @RequestMapping(value = "/hello")
-    public Mono<String> hello() {
-//        List<ServiceInstance> instance = client.getInstances("");
-//        logger.info("/hello,host:" + instance.getHost() + ", service_id:" + instance.getServiceId());
+    public Mono<String> hello() throws Exception {
 
-//        List<String> services=client.getServices();
-//        for (ServiceInstance item : instance) {
-//            System.out.println("/hello,host:" + item.getHost() + ", service_id:" + item.getServiceId());
-//        }
+        //测试ribbon重试机制
+        Thread.sleep(3000);
+
+        //发现调用的服务
+        client.getServices().forEach(id -> {
+            client.getInstances(id).forEach(instance -> {
+                logger.info("/hello, host:" + instance.getHost() + ", service_id:" + instance.getServiceId());
+            });
+        });
 
         String key = "hello_reactive_set";
         String value = "hello_reactive_value";

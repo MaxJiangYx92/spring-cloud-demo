@@ -27,6 +27,11 @@
             <artifactId>spring-cloud-config-server</artifactId>
             <version>2.0.0.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+            <version>1.4.4.RELEASE</version>
+        </dependency>
         <!-- 敏感信息安全 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

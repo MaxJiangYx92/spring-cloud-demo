@@ -16,6 +16,7 @@
         <module>spring-cloud-feign-demo</module>
         <module>spring-cloud-zuul-demo</module>
         <module>spring-cloud-config-demo</module>
+        <module>spring-cloud-config-client-demo</module>
     </modules>
 
     <properties>

@@ -38,6 +38,17 @@ public class FreeTest {
         return true;
     }
 
+    public void testOverloading() {
+    }
+
+    public String testOverloading(String name) {
+        return "hello Overloading :" + name;
+    }
+
+    public void testOverloading(String name, String sex) {
+        System.out.println("hello name : " + name + " sex : " + sex);
+    }
+
     public static void main(String[] args) {
 
 //        System.out.println(test1(22,18));
@@ -47,6 +58,8 @@ public class FreeTest {
 //            i++;
 //            foo('D');
 //        }
+
+        new FreeTest().testOverloading();
 
         try {
             System.out.println("try");

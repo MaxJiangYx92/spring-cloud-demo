@@ -19,6 +19,7 @@
         <module>spring-cloud-config-client-demo</module>
         <module>spring-boot-rabbitmq-demo</module>
         <module>spring-cloud-stream-demo</module>
+        <module>spring-cloud-stream-consumer-demo</module>
     </modules>
 
     <properties>

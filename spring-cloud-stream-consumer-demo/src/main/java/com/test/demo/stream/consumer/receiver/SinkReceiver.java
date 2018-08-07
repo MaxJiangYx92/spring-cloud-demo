@@ -17,14 +17,20 @@ import org.springframework.messaging.Message;
  * @Update -
  * @Description
  */
-@EnableBinding(value = {Sink.class})
+@EnableBinding(value = {MySink.class})
 public class SinkReceiver {
 
     private static Logger logger = LoggerFactory.getLogger(SinkReceiver.class);
 
-    @ServiceActivator(inputChannel = Sink.INPUT) //fun2 spring integration原生支持
+    @ServiceActivator(inputChannel = MySink.INPUT) //fun2 spring integration原生支持
 //    @StreamListener(Sink.INPUT) //fun1
     public void receive(Message<String> payload) {
         logger.info("Receiver:{}", payload);
+    }
+
+    @ServiceActivator(inputChannel = MySink.INPUT1) //fun2 spring integration原生支持
+//    @StreamListener(Sink.INPUT) //fun1
+    public void receive1(Message<String> payload) {
+        logger.info("Receiver1:{}", payload);
     }
 }

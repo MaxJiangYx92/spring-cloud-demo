@@ -29,7 +29,7 @@ import java.util.Date;
  * @Update -
  * @Description
  */
-@EnableBinding(value = {SinkOutput.class})
+@EnableBinding(value = {MySource.class})
 public class SinkSender {
 
 //    private static Logger logger = LoggerFactory.getLogger(SinkSender.class);
@@ -40,28 +40,27 @@ public class SinkSender {
 //    @Output(Sink.INPUT)
 //    MessageChannel output();
 
-//    @Autowired
-//    private MySource source;
-
-//    public void sendMessage(String message) {
-//        try {
-//            source.output1().send(MessageBuilder.withPayload("message: " + message).build());
-//        } catch (Exception e) {
-//            logger.info("消息发送失败，原因：" + e);
-//            e.printStackTrace();
-//        }
-//    }
-
     @Bean
-//    @InboundChannelAdapter(value = Sink.INPUT, poller = @Poller(fixedDelay = "2000"))
-    @InboundChannelAdapter(value = SinkOutput.OUTPUT, poller = @Poller(fixedDelay = "2000"))
+    @InboundChannelAdapter(value = MySource.OUTPUT, poller = @Poller(fixedDelay = "2000"))
     public MessageSource<Date> timerMessageSource() {
         return () -> new GenericMessage<>(new Date());
     }
 
-    @Transformer(inputChannel = Sink.INPUT, outputChannel = Sink.INPUT)
+    @Transformer(inputChannel = MySource.OUTPUT, outputChannel = MySource.OUTPUT)
+//    @Transformer(inputChannel = Sink.INPUT, outputChannel = Sink.INPUT)
     public Object transform(Date message) {
         return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(message);
+    }
+
+    @Bean
+    @InboundChannelAdapter(value = MySource.OUTPUT_1, poller = @Poller(fixedDelay = "3000"))
+    public MessageSource<Date> timerMessageSource1() {
+        return () -> new GenericMessage<>(new Date());
+    }
+
+    @Transformer(inputChannel = MySource.OUTPUT_1, outputChannel = MySource.OUTPUT_1)
+    public Object transform1(Date message) {
+        return new SimpleDateFormat("yyyy-MM-dd").format(message);
     }
 
 }

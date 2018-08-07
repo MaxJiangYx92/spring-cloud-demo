@@ -14,14 +14,14 @@ import org.springframework.messaging.MessageChannel;
  */
 public interface MySource {
 
-//    @Output("Output-1")
-//    MessageChannel output1();
-//
-//    @Output("Output-2")
-//    MessageChannel output2();
+    //发送队列1
+    String OUTPUT = "output";
+
+    @Output(MySource.OUTPUT)
+    MessageChannel output();
 
     //发送队列1
-    String OUTPUT_1 = "sourceA";
+    String OUTPUT_1 = "output1";
 
     @Output(MySource.OUTPUT_1)
     MessageChannel output1();

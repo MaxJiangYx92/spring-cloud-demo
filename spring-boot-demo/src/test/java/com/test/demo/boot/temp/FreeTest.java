@@ -11,6 +11,7 @@ package com.test.demo.boot.temp;
  */
 public class FreeTest {
     static {
+        //多次实例，只执行一次
         System.out.println("this is static method");
     }
 
@@ -60,15 +61,16 @@ public class FreeTest {
 //        }
 
         new FreeTest().testOverloading();
+        new FreeTest().testOverloading();
 
-        try {
-            System.out.println("try");
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("catch");
-        } finally {
-            System.out.println("finally");
-        }
+//        try {
+//            System.out.println("try");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            System.out.println("catch");
+//        } finally {
+//            System.out.println("finally");
+//        }
 
 
 //        new FreeTest();

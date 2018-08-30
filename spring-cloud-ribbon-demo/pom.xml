@@ -32,6 +32,12 @@
             <version>1.4.0.RELEASE</version>
         </dependency>
 
+        <!--<dependency>-->
+            <!--<groupId>org.apache.skywalking</groupId>-->
+            <!--<artifactId>apm-toolkit-opentracing</artifactId>-->
+            <!--<version>5.0.0-RC</version>-->
+        <!--</dependency>-->
+
         <!-- webflux -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

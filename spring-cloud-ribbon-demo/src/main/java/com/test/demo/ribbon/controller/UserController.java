@@ -5,6 +5,8 @@ import com.test.demo.common.pojo.UserDO;
 import com.test.demo.ribbon.command.UserCollapseCommand;
 import com.test.demo.ribbon.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,8 +43,8 @@ public class UserController {
 //        HystrixRequestContext context = HystrixRequestContext.initializeContext();
 //    }
 
-    @RequestMapping(value = "ribbon-users", method = RequestMethod.GET)
-    public UserDO user1Consumer() throws Exception {
+    @RequestMapping(value = "ribbon-users", method = RequestMethod.POST)
+    public UserDO user1Consumer(@RequestBody String body) throws Exception {
 //        HystrixRequestContext context = HystrixRequestContext.initializeContext();
         String name = "hello_hystrix";
 //        return restTemplate.getForEntity("http://HELLO-SERVICE/users/{1}", UserDO.class, name).getBody();
@@ -63,7 +65,8 @@ public class UserController {
 //            Thread.sleep(500);
 //        }
 
-        userService.find2(name);
+        //hystrix test
+//        userService.find2(name);
 
 //        Thread.sleep(2000);
 //        context.close();
@@ -73,7 +76,11 @@ public class UserController {
 
 //        return userDO;
 
-        return new UserDO();
+        System.out.println("this is body : " + body);
+
+        UserDO userDO = new UserDO();
+        userDO.setName("users1Consumer");
+        return userDO;
     }
 
     @RequestMapping(value = "ribbon-users3", method = RequestMethod.GET)
@@ -98,6 +105,14 @@ public class UserController {
 
         context.close();
         return "hello";
+    }
+
+    @RequestMapping(value = "ribbon-users4", method = RequestMethod.GET)
+    public String user4Consumer() throws Exception {
+
+        ResponseEntity<String> response =restTemplate.postForEntity("http://API-GATEWAY/test/api-c/hello1?accessToken=hello", "hello test body", String.class);
+        System.out.println(response.getBody());
+        return "ok";
     }
 
 

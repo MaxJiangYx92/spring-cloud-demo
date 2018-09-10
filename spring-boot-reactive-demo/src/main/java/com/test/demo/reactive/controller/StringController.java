@@ -28,7 +28,7 @@ public class StringController {
     public Mono<String> getWebClient() {
         try {
 //            WebClient webClient = WebClient.create("http://localhost:8088/");
-            Mono<String> result = webClient.post().uri("hello").accept(MediaType.APPLICATION_JSON).retrieve().bodyToMono(String.class);
+            Mono<String> result = webClient.get().uri("hello1?name={name}","helloName").accept(MediaType.APPLICATION_JSON).retrieve().bodyToMono(String.class);
 //            String monoResult = result.block();
 //            System.out.println(monoResult);
 

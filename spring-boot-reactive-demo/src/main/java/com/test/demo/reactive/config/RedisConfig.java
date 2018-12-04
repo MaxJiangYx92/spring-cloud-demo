@@ -1,4 +1,4 @@
-package com.test.demo.boot.config;
+package com.test.demo.reactive.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
